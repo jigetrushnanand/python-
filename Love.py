@@ -7,3 +7,4 @@ body {
 /* canvas full layar */
 canvas {
   display: block;
+
