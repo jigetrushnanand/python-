@@ -1,59 +1,140 @@
+# CENTRAL LIBRARY..! 
+# initialising...
+# 1st (library) class...
 class Library:
+
+# using def function... 
     def __init__(self, listOfBooks):
+        
+# Corrected dunder method name and variable assignment... 
         self.books = listOfBooks
 
+# using def function...
     def displayAvailableBooks(self):
-        print("Books present in this library are: ")
-        for book in self.books: 
-            print(" *" + book)
     
+# printing...
+        print("\nBooks present in this library are: ")
+        for book in self.books:
+        
+# printing...
+            print(" * " + book)
+
+# using def function...
     def borrowBook(self, bookName):
+    
+# applying if-else conditions...
+# applying if condition... 
         if bookName in self.books:
-            print(f"You have been issued {bookName}. Please keep it safe and return it within 30 days")
+            print(f"\nYou have been issued '{bookName}'. Please keep it safe and return it within 30 days.")
             self.books.remove(bookName)
             return True
+            
+# applying else condition...
         else:
-            print("Sorry, This book is either not available or has already been issued to someone else. Please wait until the book is available")
+      
+# printing...
+            print("\nSorry, this book is either not available or has already been issued to someone else.")
+      
+# printing...
+            print("Please wait until the book is available.")
+   
+# returns false...        
             return False
 
+# using def function...
     def returnBook(self, bookName):
+    
+# appending self.books...
         self.books.append(bookName)
-        print("Thanks for returning this book! Hope you enjoyed reading it. Have a great day ahead!")
+        
+# printing...
+        print("\nThanks for returning this book! Hope you enjoyed reading it. Have a great day ahead!")
+        
+# 2nd (student) class...
+class Student:
 
-class Student: 
+# using def function...
     def requestBook(self):
-        self.book = input("Enter the name of the book you want to borrow: ")
+    
+# taking input of self.book...
+        self.book = input("\nEnter the name of the book you want to borrow: ")
+        
+# returns self.book...     
         return self.book
 
+# using def function...
     def returnBook(self):
-        self.book = input("Enter the name of the book you want to return: ")
+    
+# taking input of self.book... 
+        self.book = input("\nEnter the name of the book you want to return: ")
+ 
+ # returns self.book...
         return self.book
-         
 
+# applying sunder methods...
 if __name__ == "__main__":
-    centraLibrary = Library(["Algorithms", "Django", "Clrs", "Python Notes"])
-    student = Student()
-    # centraLibrary.displayAvailableBooks()
-    while(True):
-        welcomeMsg = '''\n ====== Welcome to Central Library ======
-        Please choose an option:
-        1. List all the books
-        2. Request a book
-        3. Add/Return a book
-        4. Exit the Library
-        '''
-        print(welcomeMsg)
-        a = int(input("Enter a choice: "))
-        if a == 1:
-            centraLibrary.displayAvailableBooks()
-        elif a == 2:
-            centraLibrary.borrowBook(student.requestBook())
-        elif a == 3:
-            centraLibrary.returnBook(student.returnBook())
-        elif a == 4:
-            print("Thanks for choosing Central Library. Have a great day ahead!")
-            exit()
-        else:
-            print("Invalid Choice!")
 
+# Corrected the dunder check name and instantiated the classes...
+    centralLibrary = Library(["Algorithms", "Django", "Clrs", "Python Notes"])
+
+# objecting... 
+    student = Student()
+
+# applying while condition... 
+    while True:
+        welcomeMsg = '''\n ====== Welcome to Central Library ======
+Please choose an option:
+1. List all the books
+2. Request a book
+3. Add/Return a book
+4. Exit the Library
+'''
+
+# printing welcomeMsg...
+        print(welcomeMsg)
+        
+# exception handling...
+# try...
+        try:
+        
+# taking input of a... 
+            a = int(input("Enter a choice: "))
+             
+# except... 
+        except ValueError:
+    
+# printing...
+            print("Please enter a valid numeric choice.")
+           
+# continuing try-except... 
+            continue
+            
+# applyini if-elif-else condition...
+        if a == 1:
+            centralLibrary.displayAvailableBooks()
+      
+# applying elif condition...    
+        elif a == 2:
+        
+# applying elif condition...
+            centralLibrary.borrowBook(student.requestBook())
+      
+# applying elif condition...   
+        elif a == 3:
+            centralLibrary.returnBook(student.returnBook())
+       
+# applying elif condition...       
+        elif a == 4:
+        
+# printing... 
+            print("\nThanks for choosing Central Library. Have a great day ahead!")
+            break  # Prefers breaking the loop cleanly over exit()
+    
+# applying else condition...   
+        else:
+        
+# printing...
+            print("Invalid Choice!")
+            
+# finished...
         
